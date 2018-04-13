@@ -3,10 +3,10 @@ workflows:
   build:
     jobs:
       - Python_2.7
-      - Python_3.6:
+      - Python_3.6
 
 jobs:
-  - Python_2.7
+  - Python_2.7:
       docker:
         - image: circleci/python:2.7
       steps: *steps
