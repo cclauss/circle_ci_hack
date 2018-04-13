@@ -35,7 +35,7 @@ jobs:
           name: install dependencies
           command: |
             python3 -m venv venv
-            . venv/bin/activate
+            source venv/bin/activate
             pip install -r requirements.txt
             pip install flake8 pytest
 
@@ -85,21 +85,21 @@ jobs:
       - run:
           name: install dependencies
           command: |
-            virtualenv venv
-            source venv/bin/activate
+            virtualenv .
+            source bin/activate
             pip install -r requirements.txt
             pip install flake8 pytest
 
       - save_cache:
           paths:
-            - ~/repo/venv
+            - ~/repo
           key: v1-dependencies-{{ checksum "requirements.txt" }}
         
       # run tests!
       - run:
           name: run tests
           command: |
-            source venv/bin/activate
+            source bin/activate
             # stop the build if there are Python syntax errors or undefined names
             python -m flake8 . --count --exclude=lib,site-packages --select=E901,E999,F821,F822,F823 --show-source --statistics
             # exit-zero treats all errors as warnings.  The GitHub editor is 127 chars wide
