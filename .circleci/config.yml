@@ -18,7 +18,7 @@ workflows:
             #- run: python -m unittest discover test_s2gs
             #- run: python -m unittest discover test_replays
 
-      - Python_3.6
+      - Python_3.6:
           docker:
             - image: circleci/python:3.6
           steps: *steps
