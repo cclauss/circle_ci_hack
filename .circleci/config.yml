@@ -86,8 +86,8 @@ jobs:
             pip install -r requirements.txt
 
       - save_cache:
-          # paths:
-          #  - ./venv
+          paths:
+            - ~/repo
           key: v1-dependencies-{{ checksum "requirements.txt" }}
         
       # run tests!
