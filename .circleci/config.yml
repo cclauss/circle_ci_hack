@@ -83,7 +83,7 @@ jobs:
           command: |
             # python3 -m venv venv
             # . venv/bin/activate
-            pip install -r requirements.txt
+            pip install --user -r requirements.txt
 
       - save_cache:
           paths:
@@ -95,7 +95,7 @@ jobs:
           name: run tests
           command: |
             # . venv/bin/activate
-            pip install flake8 pytest
+            pip install --user flake8 pytest
             # stop the build if there are Python syntax errors or undefined names
             flake8 . --count --exclude=site-packages --select=E901,E999,F821,F822,F823 --show-source --statistics
             # exit-zero treats all errors as warnings.  The GitHub editor is 127 chars wide
