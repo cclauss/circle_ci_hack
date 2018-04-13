@@ -1,0 +1,67 @@
+version: 2.0
+
+jobs:
+  Python_2.7:
+    docker:
+      - image: circleci/python:2.7
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - run: pip install --user flake8 pytest
+      - run:
+          name: Environment
+          command: |
+            python --version
+            pip --version
+            pwd
+            ls
+      - run:
+          name: Flake8 tests major
+          command: |
+            # stop the build if there are Python syntax errors or undefined names
+            flake8 . --count --select=E901,E999,F821,F822,F823 --show-source --statistics
+      - run:
+          name: Flake8 tests minor
+          command: |
+            # exit-zero treats all errors as warnings.  The GitHub editor is 127 chars wide
+            flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
+      - run:
+          name: Pytests
+          command: |
+            true  # pytest
+
+  Python_3.6:
+    docker:
+      - image: circleci/python:3.6
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - run: pip install --user flake8 pytest
+      - run:
+          name: Environment
+          command: |
+            python --version
+            pip --version
+            pwd
+            ls
+      - run:
+          name: Flake8 tests major
+          command: |
+            # stop the build if there are Python syntax errors or undefined names
+            flake8 . --count --select=E901,E999,F821,F822,F823 --show-source --statistics
+      - run:
+          name: Flake8 tests minor
+          command: |
+            # exit-zero treats all errors as warnings.  The GitHub editor is 127 chars wide
+            flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
+      - run:
+          name: Pytests
+          command: |
+            true  # pytest
+
+workflows:
+  version: 2
+  build:
+    jobs:
+      - Python_2.7
+      - Python_3.6
