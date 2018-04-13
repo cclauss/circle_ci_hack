@@ -1,9 +1,4 @@
 version: 2.0
-workflows:
-  build:
-    jobs:
-      - Python_2.7
-      - Python_3.6
 jobs:
   Python_2.7:
       docker:
@@ -25,3 +20,8 @@ jobs:
         #- run: pytest
         #- run: python -m unittest discover test_s2gs
         #- run: python -m unittest discover test_replays
+workflows:
+  build:
+    jobs:
+      - Python_2.7
+      - Python_3.6
