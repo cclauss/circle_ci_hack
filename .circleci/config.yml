@@ -4,7 +4,7 @@
 #
 version: 2
 jobs:
-  build:
+  test_python:
     docker:
       # specify the version you desire here
       # use `-browsers` prefix for selenium tests, e.g. `3.6.1-browsers`
@@ -55,7 +55,7 @@ jobs:
           path: test-reports
           destination: test-reports
 
-  build:
+  test_legacy_python:
     docker:
       # specify the version you desire here
       # use `-browsers` prefix for selenium tests, e.g. `3.6.1-browsers`
@@ -105,3 +105,10 @@ jobs:
       - store_artifacts:
           path: test-reports
           destination: test-reports
+
+workflows:
+  version: 2
+  test_python_and_legacy_python:
+    jobs:
+      - "test_python"
+      - "test_legacy_python"
