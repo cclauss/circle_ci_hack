@@ -7,7 +7,7 @@ jobs:
     working_directory: ~/repo
     steps:
       - checkout
-      - run: pip install --user flake8 pytest
+      - run: pip install flake8 pytest
       - run:
           name: Environment
           command: |
@@ -36,7 +36,7 @@ jobs:
     working_directory: ~/repo
     steps:
       - checkout
-      - run: pip install --user flake8 pytest
+      - run: pip install flake8 pytest
       - run:
           name: Environment
           command: |
