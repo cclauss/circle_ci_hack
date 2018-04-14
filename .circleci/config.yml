@@ -1,4 +1,5 @@
 version: 2.0
+
 jobs:
   Python_2.7:
     docker:
@@ -13,12 +14,11 @@ jobs:
       # exit-zero treats all errors as warnings.  The GitHub editor is 127 chars wide
       - run: flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
       #- run: pytest
-      #- run: python -m unittest discover test_s2gs
-      #- run: python -m unittest discover test_replays
   Python_3.6:
     docker:
       - image: circleci/python:3.6
     steps: *steps
+
 workflows:
   version: 2
   build:
