@@ -15,7 +15,7 @@ jobs:
       - run: flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
       #- run: pytest
       - run: mkdir test-reports
-      - run: coverage report && coverage xml -o test-reports/coverage.xml
+      #- run: coverage report && coverage xml -o test-reports/coverage.xml
       - store_test_results:
          path: test-reports
       - store_artifacts:
