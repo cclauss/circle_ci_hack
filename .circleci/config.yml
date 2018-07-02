@@ -20,9 +20,9 @@ jobs:
          path: test-reports
       - store_artifacts:
          path: test-reports
-  Python_3.6:
+  Python_3.7:
     docker:
-      - image: circleci/python:3.6
+      - image: circleci/python:3.7
     steps: *steps
 
 workflows:
@@ -30,4 +30,4 @@ workflows:
   build:
     jobs:
       - Python_2.7
-      - Python_3.6
+      - Python_3.7
